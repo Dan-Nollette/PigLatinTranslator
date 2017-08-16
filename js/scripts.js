@@ -48,7 +48,8 @@ var isConsonant = function(character){
 };
 
 var isVowel = function(character) {
-  if (character === "a" || character === "e" || character === "i" || character === "o" || character === "u" || character === "y") {
+  var lowerCharacter = character.toLowerCase();
+  if (lowerCharacter === "a" || lowerCharacter === "e" || lowerCharacter === "i" || lowerCharacter === "o" || lowerCharacter === "u" || lowerCharacter === "y") {
     return true;
   }  else {
     return false;
