@@ -2,25 +2,29 @@ $(document).ready(function() {
   $("form#pig-latin-input").submit(function(event){
     event.preventDefault();
     var phrase = $("input#phrase").val();
-    var result = translate(phrase);
+    var result = translateMultiple(phrase);
     $("#result").text(result);
   });
 });
+
+var translateMultiple = function(phrase) {
+  var words = [];
+  words = phrase.split(" ");
+  var processedWords = words.map(function(word){
+    return translate(word);
+  });
+  return processedWords.join(" ");
+}
 
 var translate = function(phrase) {
   var characters = [];
   characters = phrase.split("");
 
-  //var vowelPresent = false;
-  // for (var i = 0; i < characters.length; i++){
-  //
-  //   if (!vowelPresent)
-  // }
-
-  if (isConsonant(characters[0])){
+  if (isConsonant(characters[0]) || characters[0].toLowerCase() === 'y'){
     var vowelFound = false;
-    var leadingConsonants = 0;
-    for (var i = 0; i < characters.length; i++) {
+    var leadingConsonants = 1;
+
+    for (var i = 1; i < characters.length; i++) {
       if (!isConsonant(characters[i])) {
         if(!vowelFound && characters[i].toLowerCase() === 'u' && characters[i - 1].toLowerCase() === 'q') {
           leadingConsonants++;
@@ -30,6 +34,7 @@ var translate = function(phrase) {
         leadingConsonants++;
       }
     }
+
     return phrase.substring(leadingConsonants) + phrase.substring(0, leadingConsonants) + "ay";
   }
 
