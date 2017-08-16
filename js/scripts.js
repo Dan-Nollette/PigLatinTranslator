@@ -29,7 +29,8 @@ var translate = function(phrase) {
     }
     return phrase.substring(leadingConsonants) + phrase.substring(0, leadingConsonants) + "ay";
   }
-  if (characters[0] === "a" || characters[0] === "e" || characters[0] === "i" || characters[0] === "o" || characters[0] === "u" || characters[0] === "y") {
+
+  if (isVowel(characters[0])) {
     return phrase + "way";
   } if (phrase )
   return phrase;
@@ -39,9 +40,18 @@ var isConsonant = function(character){
   var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'];
   var confirmedConsonant = false;
   consonants.forEach(function(consonant) {
-    if (consonant === character) {
+    if (consonant === character.toLowerCase()) {
       confirmedConsonant =  true;
     }
   });
   return confirmedConsonant;
 };
+
+var isVowel = function(character) {
+  if (character === "a" || character === "e" || character === "i" || character === "o" || character === "u" || character === "y") {
+    return true;
+  }  else {
+    return false;
+  }
+
+}
