@@ -22,6 +22,9 @@ var translate = function(phrase) {
     var leadingConsonants = 0;
     for (var i = 0; i < characters.length; i++) {
       if (!isConsonant(characters[i])) {
+        if(!vowelFound && characters[i].toLowerCase() === 'u' && characters[i - 1].toLowerCase() === 'q') {
+          leadingConsonants++;
+        }
         vowelFound = true;
       } else if (!vowelFound) {
         leadingConsonants++;
@@ -32,8 +35,9 @@ var translate = function(phrase) {
 
   if (isVowel(characters[0])) {
     return phrase + "way";
-  } if (phrase )
-  return phrase;
+  } else if (phrase) {
+    return phrase;
+  }
 };
 
 var isConsonant = function(character){
@@ -54,5 +58,4 @@ var isVowel = function(character) {
   }  else {
     return false;
   }
-
-}
+};
