@@ -19,7 +19,8 @@ var translate = function(phrase) {
     }
   });
   if (isConsonant){
-    return phrase + "ay";
+    return phrase.substring(1) + characters[0] + "ay";
+
   }
   if (characters[0] === "a" || characters[0] === "e" || characters[0] === "i" || characters[0] === "o" || characters[0] === "u" || characters[0] === "y") {
     return phrase + "way";
