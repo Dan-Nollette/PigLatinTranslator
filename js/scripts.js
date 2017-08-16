@@ -8,5 +8,8 @@ $(document).ready(function() {
 });
 
 var translate = function(phrase) {
+  if (phrase === "a" || phrase === "e" || phrase === "i" || phrase === "o" || phrase === "u") {
+    return phrase + "way";
+  }
   return phrase;
 };
