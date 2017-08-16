@@ -3,7 +3,12 @@ $(document).ready(function() {
     event.preventDefault();
     var year = parseInt($("input#year").val());
     var result = leapYear(year);
-    $("#result").text(result);
+    $("p").show();
+    if (result) {
+      $("#result").text("");
+    } else {
+      $("#result").text("not ");
+    }
   });
 });
 
