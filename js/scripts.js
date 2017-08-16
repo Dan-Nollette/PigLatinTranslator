@@ -8,7 +8,10 @@ $(document).ready(function() {
 });
 
 var translate = function(phrase) {
-  var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
+  var characters = [];
+  characters = phrase.split("");
+
+  var consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'];
   var isConsonant = false;
   consonants.forEach(function(consonant) {
     if (consonant === phrase) {
@@ -18,7 +21,7 @@ var translate = function(phrase) {
   if (isConsonant){
     return phrase + "ay";
   }
-  if (phrase === "a" || phrase === "e" || phrase === "i" || phrase === "o" || phrase === "u") {
+  if (characters[0] === "a" || characters[0] === "e" || characters[0] === "i" || characters[0] === "o" || characters[0] === "u" || characters[0] === "y") {
     return phrase + "way";
   } if (phrase )
   return phrase;
